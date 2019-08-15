@@ -1,13 +1,22 @@
-<div class="col-md-4">
+<div class="main_content">
+  <div class="row" id="recipe_top">
+    <div class="col-md-12">
+      <div id="recipe_info">
+        <h1>
+          <%= @recipe.title %>
+        </h1>
+        <p class="description">
+          <%= @recipe.description %>
+        </p>
+        <p>
+       Submitted by
+        <%= @recipe.user.email %>
+    </p>
 
+      </div>
+    </div>
+  </div>
 </div>
-	<h1>
-		<%= @recipe.title %>
-	</h1>
-	<p>
-		<%= @recipe.description %>
-	</p>
-
 <div class="row">
   <div class="col-md-6">
     <div id="ingredients">
@@ -34,7 +43,12 @@
     </div>
   </div>
 </div>
-	
-<%= link_to "Back",root_path, class: "btn btn-default" %>
-<%= link_to "Edit", edit_recipe_path, class: "btn btn-default" %>
-<%= link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default" %>
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to "Back", root_path, class: "btn btn-default" %>
+    <% if user_signed_in? %>
+      <%= link_to "Edit", edit_recipe_path, class: "btn btn-default" %>
+      <%= link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>
